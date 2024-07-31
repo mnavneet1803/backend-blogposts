@@ -4,7 +4,14 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
+app.use((req, res, next) => {
+    // Perform actions on the request object
 
+    console.log('Request received:', req.method, req.url ,req.body);
+  
+    // Continue to the next middleware/route handler
+    next();
+  });
 
 
 app.get("/getData",(req,res)=>{
